@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loaders</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    :root {
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    body {
+      font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+      color: rgb(45, 45, 45);
+      background-color: #fffef6;
+      width: 100dvw;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+    header {
+      min-height: 10dvh;
+      padding: 2rem;
+      width: 100%;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    main {
+      width: 100%;
+      flex-direction: column;
+      justify-content: center;
+    }
+    footer {
+      display: flex;
+      font-weight: 700;
+      background-color: hotpink;
+      padding: 10dvh 10dvw;
+      width: 100%;
+      flex-direction: row;
+      justify-content: center;
+    }
+    .loader-wrapper {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+    .loader {
+      box-sizing: border-box;
+      --loader-width: 8rem;
+      --indicator-color: hotpink;
+      --rest-color: lightslategray;
+    }
+  </style>
+  <body>
+    <header>
+    <h1>Loading indicators</h1>
+    <p>By Anders Clark</p>
+    </header>
+    <main>
+    <div class="loader-wrapper">
+      <h2>Spinner</h2>
+      <style>
+        /* SPINNER */
+        .loading-spinner {
+          width: var(--loader-width);
+          height:var(--loader-width); 
+          border: calc(var(--loader-width) / 4) solid var(--rest-color); 
+          border-top-color: var(--indicator-color);
+          border-radius: 50%;
+          animation: spin 1s linear infinite;
+        } 
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+      </style>
+      <div class="loader loading-spinner"></div>
+    </div>
+    <div class="loader-wrapper">
+      <h2>Dual Spinner</h2>
+      <style>
+        /* DUAL SPINNER */
+        .loading-dual-spinner {
+          width: var(--loader-width);
+          height:var(--loader-width); 
+          border: calc(var(--loader-width) / 4) solid var(--indicator-color); 
+          border-color: var(--indicator-color) transparent var(--indicator-color) transparent;
+          border-radius: 50%;
+          animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+      </style>
+      <div class="loader loading-dual-spinner"></div>
+    </div>
+    <div class="loader-wrapper">
+      <h2>Springy Spinner</h2>
+      <style>
+      /* SPRING SPINNER */
+      .loading-springy-spinner {
+        display: inline-block;
+        position: relative;
+        width: var(--loader-width);
+        height:var(--loader-width); 
+      }
+      .loading-springy-spinner div {
+        display: block;
+        position: absolute;
+        width: calc(var(--loader-width) * 0.75);
+        height: calc(var(--loader-width) * 0.75);
+        margin: calc(var(--loader-width) * 0.13);
+        border: calc(var(--loader-width) * 0.13) solid currentColor;
+        border-radius: 50%;
+        animation: spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        border-color: var(--indicator-color) transparent transparent transparent;
+      }
+      .loading-springy-spinner div:nth-child(1) {
+        animation-delay: -0.45s;
+      }
+      .loading-springy-spinner div:nth-child(2) {
+        animation-delay: -0.3s;
+      }
+      .loading-springy-spinner div:nth-child(3) {
+        animation-delay: -0.15s;
+      }
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      </style>
+      <div class="loader loading-springy-spinner">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <div class="loader-wrapper">
+      <h2>Dotted Spinner</h2>
+      <style>
+      /* DOTTED SPINNER */
+      .loading-dotted-spinner {
+        display: inline-block;
+        position: relative;
+        width: var(--loader-width);
+        height: var(--loader-width); 
+      }
+      .loading-dotted-spinner div {
+        position: absolute;
+        height: calc(var(--loader-width)/12);
+        width: calc(var(--loader-width)/12);
+        border-radius: 50%;
+        background-color: var(--indicator-color);
+        animation: grow 1.5s linear infinite;
+      }
+      .loading-dotted-spinner div:nth-child(1) {
+        animation-delay: 0s;
+        top: 36.8px;
+        left: 66.24px;
+      }
+      .loading-dotted-spinner div:nth-child(2) {
+        animation-delay: -0.1s;
+        top: 22.08px;
+        left: 62.29579px;
+      }
+      .loading-dotted-spinner div:nth-child(3) {
+        animation-delay: -0.2s;
+        top: 11.30421px;
+        left: 51.52px;
+      }
+      .loading-dotted-spinner div:nth-child(4) {
+        animation-delay: -0.3s;
+        top: 7.36px;
+        left: 36.8px;
+      }
+      .loading-dotted-spinner div:nth-child(5) {
+        animation-delay: -0.4s;
+        top: 11.30421px;
+        left: 22.08px;
+      }
+      .loading-dotted-spinner div:nth-child(6) {
+        animation-delay: -0.5s;
+        top: 22.08px;
+        left: 11.30421px;
+      }
+      .loading-dotted-spinner div:nth-child(7) {
+        animation-delay: -0.6s;
+        top: 36.8px;
+        left: 7.36px;
+      }
+      .loading-dotted-spinner div:nth-child(8) {
+        animation-delay: -0.7s;
+        top: 51.52px;
+        left: 11.30421px;
+      }
+      .loading-dotted-spinner div:nth-child(9) {
+        animation-delay: -0.8s;
+        top: 62.29579px;
+        left: 22.08px;
+      }
+      .loading-dotted-spinner div:nth-child(10) {
+        animation-delay: -0.9s;
+        top: 66.24px;
+        left: 36.8px;
+      }
+      .loading-dotted-spinner div:nth-child(11) {
+        animation-delay: -1s;
+        top: 62.29579px;
+        left: 51.52px;
+      }
+      .loading-dotted-spinner div:nth-child(12) {
+        animation-delay: -1.1s;
+        top: 51.52px;
+        left: 62.29579px;
+      }
+      @keyframes grow {
+        0%, 20%, 80%, 100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.4);
+        }
+      }
+      </style>
+      <div class="loader loading-dotted-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
+    <div class="loader-wrapper">
+      <h2>Orbit Spinner</h2>
+      <style>
+        .loading-orbit-spinner {
+          display: inline-block;
+          position: relative;
+          box-sizing: border-box;
+          width: var(--loader-width);
+          height: var(--loader-width);
+          border: 0.5rem solid var(--rest-color);
+          border-radius: 50%;
+          animation: rotation 1s linear infinite;
+        }
+        .loading-orbit-spinner::after {
+          content: '';  
+          box-sizing: border-box;
+          position: absolute;
+          left: 0;
+          top: 0;
+          background: var(--indicator-color);
+          width: calc(var(--loader-width)/3);
+          height: calc(var(--loader-width)/3);
+          transform: translate(-50%, 50%);
+          border-radius: 50%;
+        }
+        @keyframes rotation {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      </style>
+      <div class="loader loading-orbit-spinner"></div>
+    </div>
+    <div class="loader-wrapper">
+      <h2>Pie Spinner</h2>
+      <style>
+        .loading-pie-spinner {
+          position: relative;
+          width: var(--loader-width);
+          height: var(--loader-width);
+          border-radius: 50%;
+          transform:rotate(45deg);
+          background: var(--rest-color);
+        }
+        .loading-pie-spinner::before {
+            content: "";
+            box-sizing: border-box;
+            position: absolute;
+            inset: 0px;
+            border-radius: 50%;
+            border: calc(var(--loader-width)/2) solid var(--indicator-color);
+            animation: pieClip 1.4s infinite linear;
+        }
+        @keyframes pieClip {
+              0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
+              25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
+              50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
+              75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
+              100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
+          }
+      </style>
+      <div class="loader loading-pie-spinner">
+
+      </div>
+    </div>
+  </main>
+    <footer>
+      <p>Inspired by <a href="https://cssloaders.github.io/">cssloaders.github.io</a></p>
+    </footer>
+  </body>
+</html>
